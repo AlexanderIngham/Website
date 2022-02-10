@@ -1,0 +1,164 @@
+/* Author: Alexander Ingham */
+/*
+Possible Color Pallet:
+NavBar          #414450
+Background	    #282a36	
+Current Line	#44475a	
+Foreground	    #f8f8f2	
+Comment	        #6272a4	
+Cyan	        #8be9fd	
+Green	        #50fa7b	
+Orange	        #ffb86c	
+Pink	        #ff79c6	
+Purple	        #bd93f9	
+Red	            #ff5555	
+Yellow	        #f1fa8c	
+*/
+
+:root {
+    font-size: 16px;
+    font-family: Consolas;
+    --text-primary:aliceblue;
+    --text-secondary:#ffff;
+    --bg-primary: #282A36;
+    --bg-secondary: #414450;
+    --bg-secondary-hover: #343741;
+    --transition-speed: 600ms;
+}
+
+.bodyHome {
+    background-color: #282A36;
+    font-family: Consolas;
+    color:aliceblue;
+}
+
+body::-webkit-scrollbar{    /*Override default scrollbar*/
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track{    /*Set scrollbar bg*/
+    background:var(--bg-primary);
+}
+
+body::-webkit-scrollbar-thumb{    /*Override default scrollbar*/
+    background: #8be9fd;
+}
+
+main{
+    margin-left: 5rem;
+    padding: 1rem;
+}
+
+#navbar-top {
+    background-color: #414450;
+    z-index: 2;
+    position:fixed;
+    width:100%;
+}
+
+.sidebar {
+    position: fixed;
+    background-color: var(--bg-secondary);
+    z-index: 1;
+    transition: 200ms ease;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%
+}
+
+.sidebar-nav-item {
+    width: 100%;
+}
+
+.sidebar-nav-item:first-child {
+    margin-top: 100px;
+}
+
+.sidebar-nav-item:last-child {
+    margin-top: auto;
+}
+
+
+.sidebar-nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.link-text {
+    display: none;
+    padding: 10px;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+}
+
+.sidebar-nav-link i {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+.sidebar-nav-link:hover {
+    background: var(--bg-secondary-hover);
+}
+
+a {
+    color:#8be9fd !important;
+}
+a:hover {
+    color:#f1fcff !important;
+}
+
+/*Small Screens*/
+@media only screen and (max-width: 600px){
+    .sidebar{
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+    }
+
+    .sidebar-nav-link {
+        justify-content: center;
+    }
+
+    .sidebar-nav-item:first-child {
+        margin-top: 0;
+    }
+    
+    .sidebar-nav-item:last-child {
+        margin-top: 0;
+    }
+    
+    main{
+        margin: 0;
+    }
+}
+
+/*Large Screens*/
+@media only screen and (min-width: 600px){
+    .sidebar {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
+    
+    .sidebar-nav-link:hover .link-text{
+        display: inline;
+        background-color: var(--bg-secondary);
+    }
+
+
+}
+
