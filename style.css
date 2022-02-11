@@ -47,6 +47,7 @@ body::-webkit-scrollbar-thumb{    /*Override default scrollbar*/
 main{
     margin-left: 5rem;
     padding: 1rem;
+    padding-top:6rem;
 }
 
 #navbar-top {
@@ -116,6 +117,52 @@ a {
 }
 a:hover {
     color:#f1fcff !important;
+}
+
+.titleContainer {
+    display:flex;
+    align-items: center;
+    justify-content: center !important;
+    min-height:100vh
+}
+
+.titleContainer > div {
+    flex-basis:50%;
+}
+
+.title-col {
+    position: relative;
+    text-align: center;
+    padding:10px;
+}
+
+.svg-col {
+    position: relative;
+    padding:10px;
+}
+
+#cone {
+    opacity:0;
+}
+
+#bigDot,
+#smallDot {
+    transition: all 500ms ease;
+    transform-origin: 464px 98.5px;
+}
+
+svg:hover #smallDot{
+    transform:rotate(195deg)
+}
+
+svg:hover #bigDot{
+    transform:rotate(195deg)
+}
+
+svg:hover #cone {
+    transition: all 1s ease-in;
+    transition-delay:500ms;
+    opacity:1;
 }
 
 /*Small Screens*/
