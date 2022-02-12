@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- Author: Alexander Ingham -->
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="https://kit.fontawesome.com/1361d7090e.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Alex's Website</title>
+    </head>
+
+    <body class="bodyHome" id="body-home">
+
+        <!--Top Navigation Bar-->
+        <nav id="topbar" class="topbar">
+            <ul class="topbar-nav">
+                <li class="topbar-nav-logo">
+                    <a class="topbar-nav-link" href="index.html">
+                        <img src="Images/Logo.png" width="30" class="logoImage" alt="Logo" onmouseover="logoHover(this);" onmouseout="logoUnhover(this);" />
+                    </a>
+                </li>
+                <li class="topbar-nav-item">
+                    <a class="topbar-nav-link">
+                        <span class="toplink-text">File</span>
+                    </a>
+                </li>
+                <li class="topbar-nav-item">
+                    <a class="topbar-nav-link">
+                        <span class="toplink-text">Edit</span>
+                    </a>
+                </li>
+                <li class="topbar-nav-item">
+                    <a class="topbar-nav-link">
+                        <span class="toplink-text">Selection</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!--Side Navigation Bar-->
+        <nav id="sidebar" class="sidebar">
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item">
+                    <a class="sidebar-nav-link sidebar-nav-link-current" href="AboutMe.html">
+                        <i class="fa-regular fa-address-book fa-2x"></i>
+                        <span class="sidelink-text">About Me</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a class="sidebar-nav-link">
+                        <i class="fa-solid fa-code-branch fa-2x"></i>
+                        <span class="sidelink-text">Github</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!--Content-->
+        <main>
+            <div class="imageFrame">
+                <img src="Images\profile.jpeg" width="350" filter: drop-shadow(5px 5px 5px #222);/>
+            </div>
+        </main>
+
+        <script src="site.js"></script>
+        <script src="js/bootstrap.js"></script>
+    </body>
+</html>

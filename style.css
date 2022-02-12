@@ -50,16 +50,64 @@ main {
     padding-top:6rem;
 }
 
-#navbar-top {
-    background-color: #414450;
+.topbar {
+    display:flex;
+    background-color: var(--bg-secondary);
     z-index: 2;
     position:fixed;
     width:100%;
 }
 
+.topbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    vertical-align: middle;
+}
+
+.topbar-nav-item {
+    line-height: 30px;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin:0;
+    background-color: var(--bg-secondary);
+    border-bottom: solid 4px var(--bg-secondary);
+}
+
+.topbar-nav-item:hover {
+    background-color: var(--bg-primary);
+    cursor:pointer;
+}
+
+.topbar-nav-logo {
+    line-height: 30px;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin:0;
+    background-color: var(--bg-secondary);
+    border-bottom: solid 4px var(--bg-secondary);
+}
+
+.topbar-nav-link {
+    padding:0;
+    margin:0;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.toplink-text {
+    font-size:16px;
+    white-space: nowrap;
+}
+
+
+
 .sidebar {
     position: fixed;
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-secondary-hover);
     z-index: 1;
 }
 
@@ -78,22 +126,24 @@ main {
 }
 
 .sidebar-nav-item:first-child {
-    margin-top: 100px;
+    margin-top: 40px;
+    margin-right: 0px;
+    padding-right: 0px;
 }
 
 .sidebar-nav-item:last-child {
-    margin-top: auto;
+    /* margin-top: auto; */
 }
 
 .sidebar-nav-link {
     display: flex;
     align-items: center;
-    height: 5rem;
+    height: 4rem;
     color: var(--text-primary);
     text-decoration: none;
 }
 
-.link-text {
+.sidelink-text {
     display: none;
     opacity: 0;
     padding: 10px;
@@ -103,13 +153,16 @@ main {
 
 .sidebar-nav-link i {
     min-width: 2rem;
-    margin: 0 1.5rem;
+    margin: 0 1rem;
 }
 
-.sidebar-nav-link:hover {
-    background: var(--bg-secondary-hover);
+.sidebar-nav-link-current{
+    border-left: solid 2px var(--text-primary)
 }
 
+.sidebar-nav-link-current i{
+    color:var(--text-secondary);
+}
 
 a {
     color:#8be9fd !important;
@@ -140,24 +193,27 @@ a:hover {
     transform-origin: 1116.5px 110.5px;
 }
 
-svg:hover #smallDot{
+.smallDotPermaHover {
     transform:rotate(195deg)
 }
 
-svg:hover #bigDot{
+.bigDotPermaHover{
     transform:rotate(195deg)
 }
 
-svg:hover #cone {
+.conePermaHover {
     transition: all 1s ease-in;
     transition-delay:500ms;
-    opacity:1;
 }
 
-svg:hover #text {
+.textPermaHover {
     transition: all 1s ease-in;
     transition-delay:550ms;
-    opacity:1;
+}
+
+
+.imageFrame {
+
 }
 
 /*Small Screens*/
@@ -193,11 +249,11 @@ svg:hover #text {
 @media only screen and (min-width: 600px){
     .sidebar {
         top: 0;
-        width: 5rem;
+        width: 4rem;
         height: 100vh;
     }
     
-    .sidebar-nav-link:hover .link-text{
+    .sidebar-nav-link:hover .sidelink-text{
         display: inline;
         opacity: 1;
         background-color: var(--bg-secondary);
