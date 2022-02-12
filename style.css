@@ -32,19 +32,19 @@ Yellow	        #f1fa8c
     color:aliceblue;
 }
 
-body::-webkit-scrollbar{    /*Override default scrollbar*/
+body::-webkit-scrollbar {    /*Override default scrollbar*/
     width: 0.25rem;
 }
 
-body::-webkit-scrollbar-track{    /*Set scrollbar bg*/
+body::-webkit-scrollbar-track {    /*Set scrollbar bg*/
     background:var(--bg-primary);
 }
 
-body::-webkit-scrollbar-thumb{    /*Override default scrollbar*/
+body::-webkit-scrollbar-thumb {    /*Override default scrollbar*/
     background: #8be9fd;
 }
 
-main{
+main {
     margin-left: 5rem;
     padding: 1rem;
     padding-top:6rem;
@@ -85,7 +85,6 @@ main{
     margin-top: auto;
 }
 
-
 .sidebar-nav-link {
     display: flex;
     align-items: center;
@@ -119,36 +118,26 @@ a:hover {
     color:#f1fcff !important;
 }
 
+/*--Title SVG--*/
 .titleContainer {
     display:flex;
     align-items: center;
     justify-content: center !important;
-    min-height:100vh
-}
-
-.titleContainer > div {
-    flex-basis:50%;
-}
-
-.title-col {
-    position: relative;
-    text-align: center;
-    padding:10px;
-}
-
-.svg-col {
-    position: relative;
-    padding:10px;
+    min-height: 80vh;
 }
 
 #cone {
     opacity:0;
 }
 
+#text {
+    opacity:0;
+}
+
 #bigDot,
 #smallDot {
     transition: all 500ms ease;
-    transform-origin: 464px 98.5px;
+    transform-origin: 1116.5px 110.5px;
 }
 
 svg:hover #smallDot{
@@ -162,6 +151,12 @@ svg:hover #bigDot{
 svg:hover #cone {
     transition: all 1s ease-in;
     transition-delay:500ms;
+    opacity:1;
+}
+
+svg:hover #text {
+    transition: all 1s ease-in;
+    transition-delay:550ms;
     opacity:1;
 }
 
