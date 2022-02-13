@@ -190,15 +190,16 @@ a:hover {
 #bigDot,
 #smallDot {
     transition: all 500ms ease;
-    transform-origin: 1116.5px 110.5px;
+    transform-origin: 1265.5px 95.5px;
 }
 
 .smallDotPermaHover {
-    transform:rotate(195deg)
+    transform:rotate(195deg);
+    transform:translateX();
 }
 
 .bigDotPermaHover{
-    transform:rotate(195deg)
+    transform:rotate(195deg);
 }
 
 .conePermaHover {

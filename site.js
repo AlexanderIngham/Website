@@ -17,3 +17,12 @@ $("#body-home").one("mouseover", function() {
     $("#smallDot").addClass('smallDotPermaHover');
     $("#bigDot").addClass('bigDotPermaHover');
 });
+
+var leftBrace = document.getElementById("leftBrace");
+var rightBrace = document.getElementById("rightBrace");
+document.addEventListener('mousemove', function(e){
+    var x = e.clientX;
+    var y = e.clientY;
+    leftBrace.style.transform = "translateX("+y/10+"px)";
+    rightBrace.style.transform = "translateX(-"+y/10+"px)";
+})
