@@ -15,6 +15,7 @@ Red	            #ff5555
 Yellow	        #f1fa8c	
 */
 
+/*Variables*/
 :root {
     font-size: 16px;
     font-family: Consolas;
@@ -25,8 +26,10 @@ Yellow	        #f1fa8c
     --bg-secondary-hover: #343741;
     --highlight: #8be9fd;
     --transition-speed: 600ms;
+    --radius: 3px;
 }
 
+/*Overall Content:*/
 .bodyHome {
     background-color: #282A36;
     font-family: Consolas;
@@ -46,11 +49,12 @@ body::-webkit-scrollbar-thumb {    /*Override default scrollbar*/
 }
 
 main {
-    margin-left: 4rem;
+    margin-left: 4.5rem;
     padding: 1.5rem;
     padding-top:4rem;
 }
 
+/*Top Navigation Bar*/
 .topbar {
     display:flex;
     background-color: var(--bg-secondary);
@@ -121,51 +125,36 @@ main {
     width: 100%;
 }
 
-
+/*Side Navigation Bar*/
 .sidebar {
     position: fixed;
     background-color: var(--bg-secondary-hover);
     z-index: 1;
+    top: 0;
+    width: 4.5rem;
+    height: 100vh;
 }
 
 .sidebar-nav {
     list-style: none;
     padding: 0;
     margin: 0;
+    position:fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%
+    gap: 3rem;
+    height: 100%;
 }
 
 .sidebar-nav-item {
+    position: relative;
+    min-width: 4rem;
     width: 100%;
 }
 
 .sidebar-nav-item:first-child {
-    margin-top: 40px;
-    margin-right: 0px;
-    padding-right: 0px;
-}
-
-.sidebar-nav-item:last-child {
-    /* margin-top: auto; */
-}
-
-.sidebar-nav-link {
-    display: flex;
-    align-items: center;
-    height: 4rem;
-    color: var(--text-primary);
-    text-decoration: none;
-}
-
-.sidelink-text {
-    display: none;
-    opacity: 0;
-    padding: 10px;
-    margin-left: 0.5rem;
-    white-space: nowrap;
+    margin-top: 4rem;
 }
 
 .sidebar-nav-link i {
@@ -173,12 +162,55 @@ main {
     margin: 0 1rem;
 }
 
-.sidebar-nav-link-current {
-    border-left: solid 2px var(--text-primary)
+.sidebar-nav-item-current {
+    border-left: solid 3px var(--text-primary)
 }
 
-.sidebar-nav-link-current i {
+.sidebar-nav-item-current i {
     color: var(--text-secondary);
+}
+
+.sidebar-nav-item::before {
+    content: attr(data-tooltip);
+    font-size: 16px;
+    position: absolute;
+    left: 4.8rem;
+    top: -0.45rem;
+    border-radius: var(--radius);
+    background-color: var(--bg-secondary-hover);
+    opacity: 0;
+    padding: 0.8rem;
+}
+
+.sidebar-nav-item:hover::before {
+    opacity: 1;
+    left: 5.2rem;
+    transition: all 200ms ease-in;
+}
+
+/*Bottom Navigation Bar (Mobile Only)*/
+.mobilebar {
+    position: fixed;
+    background-color: var(--bg-secondary-hover);
+    z-index: 1;
+    bottom: 0;
+    width: 100vw;
+    height: 4rem;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    display: flex;
+    overflow-x: auto;
+}
+
+.mobilebar-nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-decoration: none;
 }
 
 
@@ -271,47 +303,27 @@ a:hover {
 }
 
 /*Small Screens*/
-@media only screen and (max-width: 600px){
-    .sidebar{
-        bottom: 0;
-        width: 100vw;
-        height: 3rem;
+@media only screen and (max-width: 800px){
+    /*Don't display sidebar*/
+    .sidebar {
+        display: none;
     }
 
-    .sidebar-nav {
-        flex-direction: row;
+    main {
+        margin-left: 0;
+        margin-bottom: 4rem;
+        padding: 1.5rem;
+        padding-top:4rem;
     }
 
-    .sidebar-nav-link {
-        justify-content: center;
-    }
-
-    .sidebar-nav-item:first-child {
-        margin-top: 0;
-    }
-    
-    .sidebar-nav-item:last-child {
-        margin-top: 0;
-    }
-    
-    main{
-        margin: 0;
-    }
 }
 
 /*Large Screens*/
-@media only screen and (min-width: 600px){
-    .sidebar {
-        top: 0;
-        width: 4rem;
-        height: 100vh;
-    }
-    
-    .sidebar-nav-link:hover .sidelink-text{
-        display: inline;
-        opacity: 1;
-        background-color: var(--bg-secondary);
-    }
+@media only screen and (min-width: 800px){
 
+    /*Don't display bottom bar*/
+    .mobilebar{
+        display: none;
+    }
 }
 
