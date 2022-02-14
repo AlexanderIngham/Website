@@ -23,6 +23,7 @@ Yellow	        #f1fa8c
     --bg-primary: #282A36;
     --bg-secondary: #414450;
     --bg-secondary-hover: #343741;
+    --highlight: #8be9fd;
     --transition-speed: 600ms;
 }
 
@@ -45,9 +46,9 @@ body::-webkit-scrollbar-thumb {    /*Override default scrollbar*/
 }
 
 main {
-    margin-left: 5rem;
-    padding: 1rem;
-    padding-top:6rem;
+    margin-left: 4rem;
+    padding: 1.5rem;
+    padding-top:4rem;
 }
 
 .topbar {
@@ -103,6 +104,22 @@ main {
     white-space: nowrap;
 }
 
+.topbar li::before {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0%;
+    background-color: var(--highlight);
+    transition: all ease-in-out 550ms;
+}
+
+.topbar li:first-child::before {
+    opacity: 0;
+}
+
+.topbar li:hover::before {
+    width: 100%;
+}
 
 
 .sidebar {
@@ -156,13 +173,14 @@ main {
     margin: 0 1rem;
 }
 
-.sidebar-nav-link-current{
+.sidebar-nav-link-current {
     border-left: solid 2px var(--text-primary)
 }
 
-.sidebar-nav-link-current i{
-    color:var(--text-secondary);
+.sidebar-nav-link-current i {
+    color: var(--text-secondary);
 }
+
 
 a {
     color:#8be9fd !important;
@@ -190,12 +208,11 @@ a:hover {
 #bigDot,
 #smallDot {
     transition: all 500ms ease;
-    transform-origin: 1265.5px 95.5px;
+    transform-origin: 1183.5px 96.5px;
 }
 
 .smallDotPermaHover {
     transform:rotate(195deg);
-    transform:translateX();
 }
 
 .bigDotPermaHover{
@@ -212,9 +229,45 @@ a:hover {
     transition-delay:550ms;
 }
 
+.centerContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-.imageFrame {
+.aboutSection {
+    background: url(Images/Kayak.jpg) no-repeat left;
+    background-size: 55%;
+    overflow: hidden;
+    padding: 30px 0;
+    height: 80vh;
+}
 
+.aboutContainer {
+    width: 55%;
+    float: right;
+    background-color: var(--bg-secondary);
+    padding: 70px;
+}
+
+.aboutContainer h1 {
+    margin-bottom: 25px;
+    font-weight: 900;
+    font-size: 30px;
+    display: inline-block;
+}
+
+.aboutContainer i {
+    display: inline;
+    padding-right: 10px;
+}
+
+.aboutContainer .aboutText {
+    display: block;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
 }
 
 /*Small Screens*/
@@ -222,7 +275,7 @@ a:hover {
     .sidebar{
         bottom: 0;
         width: 100vw;
-        height: 5rem;
+        height: 3rem;
     }
 
     .sidebar-nav {
