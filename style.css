@@ -261,46 +261,50 @@ a:hover {
     transition-delay:550ms;
 }
 
-.centerContainer{
+.headerContainer{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: auto;
+    margin:0;
+    padding:0;
 }
 
-.aboutSection {
-    background: url(Images/Kayak.jpg) no-repeat left;
-    background-size: 55%;
-    overflow: hidden;
-    padding: 30px 0;
-    height: 80vh;
+.aboutMeHeader {
+    margin-bottom: 0;
+    margin-left: 20px;
 }
 
-.aboutContainer {
-    width: 55%;
-    float: right;
-    background-color: var(--bg-secondary);
-    padding: 70px;
+.contentContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-top: 3rem;
 }
 
-.aboutContainer h1 {
-    margin-bottom: 25px;
-    font-weight: 900;
-    font-size: 30px;
-    display: inline-block;
+.contentContainer .col1 {
+    text-align: center;
+    width: auto;
+    min-width: 20%
 }
 
-.aboutContainer i {
-    display: inline;
-    padding-right: 10px;
+.aboutText {
+    text-align: center;
+    padding-right: 100px;
+    padding-left: 100px;
+    margin-bottom: 0;
 }
 
-.aboutContainer .aboutText {
-    display: block;
-    font-size: 16px;
-    line-height: 30px;
-    text-align: justify;
-    margin-bottom: 40px;
+.contentContainer .col2 {
+    text-align: left;
+    width: auto;
+    min-width: 40%;
 }
+
 
 /*Small Screens*/
 @media only screen and (max-width: 800px){
