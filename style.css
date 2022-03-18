@@ -475,6 +475,14 @@ a:hover {
     vertical-align: text-top;
 }
 
+.fadeIn {
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+}
+.fadeIn.appear {
+    opacity: 1;
+}
+
 
 /*Small Screens*/
 @media only screen and (max-width: 800px){
