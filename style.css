@@ -264,16 +264,31 @@ a:hover {
 .headerContainer{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     width: auto;
     margin:0;
     padding:0;
+    padding-left: 3rem;
 }
 
 .aboutMeHeader {
+    display: flex;
+    position: relative;
     margin-bottom: 0;
     padding-bottom: 0;
     margin-left: 20px;
+    white-space: nowrap;
+}
+
+.aboutMeHeader::after {
+    content: "";
+    display: block;
+    position: relative;
+    margin-left: 1rem;
+    top: 25px;
+    height: 2px;
+    width: 300px;
+    background-color: var(--text-primary);
 }
 
 .contentContainer {
@@ -283,15 +298,16 @@ a:hover {
     width: auto;
     margin: 0;
     padding: 0;
-    margin-top: 3rem;
+    margin-top: 2rem;
     padding-left: 3rem;
     padding-right: 3rem;
 }
 
 .contentContainer .col1 {
+    padding-right: 3rem;
     text-align: center;
     width: auto;
-    min-width: 40%
+    min-width: 50%
 }
 
 .aboutText {
@@ -302,13 +318,14 @@ a:hover {
 }
 
 .contentContainer .col2 {
-    text-align: left;
+    text-align: center;
     width: auto;
-    min-width: 60%;
+    min-width: 50%;
     vertical-align: text-top;
 }
 
 .skill {
+    text-align: left;
     margin-bottom: 35px;
     position: relative;
     overflow-x: hidden;
@@ -430,6 +447,32 @@ a:hover {
         width: 55%;
     }
 }
+
+.educationContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-top: 10rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.educationContainer .col1 {
+    text-align: center;
+    width: auto;
+    min-width: 40%;
+    vertical-align: text-top;
+}
+.educationContainer .col2 {
+    text-align: left;
+    width: auto;
+    min-width: 60%;
+    vertical-align: text-top;
+}
+
 
 /*Small Screens*/
 @media only screen and (max-width: 800px){
