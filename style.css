@@ -272,39 +272,164 @@ a:hover {
 
 .aboutMeHeader {
     margin-bottom: 0;
+    padding-bottom: 0;
     margin-left: 20px;
 }
 
-.contentContainer{
+.contentContainer {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: row;
     width: auto;
     margin: 0;
     padding: 0;
     margin-top: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 .contentContainer .col1 {
     text-align: center;
     width: auto;
-    min-width: 20%
+    min-width: 40%
 }
 
 .aboutText {
     text-align: center;
-    padding-right: 100px;
-    padding-left: 100px;
+    margin-top: 20px;
     margin-bottom: 0;
+    font-size: 18px;
 }
 
 .contentContainer .col2 {
     text-align: left;
     width: auto;
-    min-width: 40%;
+    min-width: 60%;
+    vertical-align: text-top;
 }
 
+.skill {
+    margin-bottom: 35px;
+    position: relative;
+    overflow-x: hidden;
+}
+.skill > p {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+.skill:before{
+    width: 100%;
+    height: 5px;
+    display: block;
+    content: "";
+    position: absolute;
+    background: #414450;
+    bottom: 0;
+}
+.skill-bar {
+    width: 100%;
+    height: 5px;
+    background:var(--highlight);
+    display: block;
+    position: relative;
+}
+.skill-bar span{
+    position: absolute;
+    top: -30px;
+    padding: 0;
+    font-size: 18px;
+    padding: 3px 0;
+    font-weight: 500;
+}
+.skill-bar {
+    position: relative;
+}
+.skill1{
+    width: 0%;
+    animation: html-fill1 2s forwards;
+}
+.skill1 .skill-val1 {
+    right: 0;
+}
+@keyframes html-fill1{
+    100%{
+        width: 90%;
+    }
+}
+.skill2{
+    width: 0%;
+    animation: html-fill2 2s forwards;
+}
+.skill2 .skill-val2 {
+    right: 0;
+}
+@keyframes html-fill2{
+    100%{
+        width: 90%;
+    }
+}
+.skill3{
+    width: 0%;
+    animation: html-fill3 2s forwards;
+}
+.skill3 .skill-val3 {
+    right: 0;
+}
+@keyframes html-fill3{
+    100%{
+        width: 75%;
+    }
+}
+.skill4{
+    width: 0%;
+    animation: html-fill4 2s forwards;
+}
+.skill4 .skill-val4 {
+    right: 0;
+}
+@keyframes html-fill4{
+    100%{
+        width: 65%;
+    }
+}
+.skill5{
+    width: 0%;
+    animation: html-fill5 2s forwards;
+}
+.skill5 .skill-val5 {
+    right: 0;
+}
+@keyframes html-fill5{
+    100%{
+        width: 80%;
+    }
+}
+.skill6{
+    width: 0%;
+    animation: html-fill6 2s forwards;
+}
+.skill6 .skill-val6 {
+    right: 0;
+}
+@keyframes html-fill6{
+    100%{
+        width: 90%;
+    }
+}
+.skill7{
+    width: 0%;
+    animation: html-fill7 2s forwards;
+}
+.skill7 .skill-val7 {
+    right: 0;
+}
+@keyframes html-fill7{
+    100%{
+        width: 55%;
+    }
+}
 
 /*Small Screens*/
 @media only screen and (max-width: 800px){
