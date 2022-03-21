@@ -9,9 +9,11 @@ function logoUnhover(element) {
 const faders = document.querySelectorAll
 ('.fadeIn');
 
+const sliders = document.querySelectorAll('.slideIn');
+
 const appearOptions = {
-    threshold: 1,
-    rootMargin: "0px 0px -20px 0px"
+    threshold: 0,
+    rootMargin: "0px 0px -215px 0px"
 };
 
 const appearOnScroll = new IntersectionObserver
@@ -31,5 +33,8 @@ appearOptions);
 
 faders.forEach(fader => {
     appearOnScroll.observe(fader);
-})
+});
 
+sliders.forEach(slider=> {
+    appearOnScroll.observe(slider);
+});
