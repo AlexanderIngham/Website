@@ -499,13 +499,51 @@ a:hover {
 .workContainer .inner .col1 {
     text-align: left;
     width: auto;
-    max-width: 30%;
+    max-width: 25%;
     vertical-align: text-top;
     position: relative;
     z-index: 3;
     padding: 0px;
     margin: 0px;
     list-style: none;
+}
+
+.workContainer .inner .col2 {
+    text-align: left;
+    width: auto;
+    max-width: 75%;
+    vertical-align: text-top;
+    position: relative;
+    z-index: 3;
+    padding: 5px 1rem 5px 1rem;
+    margin: 0;
+}
+
+.jobTitle {
+    font-size: 20px;
+}
+
+.company {
+    font-size: 20px;
+    color: var(--highlight);
+}
+
+.responsabilityList {
+    display: block;
+    margin: 1rem 0 0 0;
+    padding: 0;
+    list-style: none;
+}
+.responsabilityItem {
+    position: relative;
+    margin: 0 0 10px;
+    padding: 0 0 0 30px;
+}
+.responsabilityItem:before {
+    content: "▹";
+    color: var(--highlight);
+    position: absolute;
+    left: 0px;
 }
 
 .roleButton {
@@ -516,9 +554,9 @@ a:hover {
     display: inline;
     -webkit-box-align: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     height: 3rem;
-    padding: 0px 20px 2px;
+    padding: 0px 20px 0px;
     border: 0px;
     border-radius: 0px;
     border-left: 2px solid var(--bg-secondary);
@@ -527,11 +565,26 @@ a:hover {
     text-align: left;
     white-space: nowrap;
 }
-
 .roleButton:hover {
     color: var(--highlight);
+    background-color: var(--bg-secondary-hover);
 }
-
+.selectedRoleButton {
+    color: var(--highlight);
+    background-color: var(--bg-secondary-hover);
+}
+.roleButtonIndicator {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 2px;
+    height: 48px;
+    border-radius: 5px;
+    background: var(--highlight);
+    transform: translateY(calc(0 * 5px));
+    transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
+}
 
 .fromLeft, 
 .fromRight {
