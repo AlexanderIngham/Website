@@ -564,6 +564,7 @@ a:hover {
     color: var(--bg-secondary);
     text-align: left;
     white-space: nowrap;
+    transition-duration: 0.3s;
 }
 .roleButton:hover {
     color: var(--highlight);
@@ -582,7 +583,6 @@ a:hover {
     height: 48px;
     border-radius: 5px;
     background: var(--highlight);
-    transform: translateY(calc(0 * 5px));
     transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
 }
 

@@ -38,3 +38,32 @@ faders.forEach(fader => {
 sliders.forEach(slider=> {
     appearOnScroll.observe(slider);
 });
+
+
+//Role Buttons (About Me Page)
+function roleswap(element) {
+    roleButtons = document.getElementsByClassName("selectedRoleButton");
+
+    for(btn of roleButtons){
+        btn.classList.remove("selectedRoleButton");
+    }
+
+    switch(element.id){
+        case "role-B1":
+            document.getElementById("role-Bar").style.transform = "translateY(0)";
+            break;
+        case "role-B2":
+            document.getElementById("role-Bar").style.transform = "translateY(calc(1 * 48px))";
+            break;
+        case "role-B3":
+            document.getElementById("role-Bar").style.transform = "translateY(calc(2 * 48px))";
+            break;
+        case "role-B4":
+            document.getElementById("role-Bar").style.transform = "translateY(calc(3 * 48px))";
+            break;
+        default:
+            document.getElementById("role-Bar").style.transform = "translateY(0)";
+            break;
+    }
+    element.classList.add("selectedRoleButton");
+}
