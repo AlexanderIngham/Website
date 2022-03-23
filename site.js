@@ -42,26 +42,36 @@ sliders.forEach(slider=> {
 
 //Role Buttons (About Me Page)
 function roleswap(element) {
-    roleButtons = document.getElementsByClassName("selectedRoleButton");
 
+    roleButtons = document.getElementsByClassName("selectedRoleButton");
     for(btn of roleButtons){
         btn.classList.remove("selectedRoleButton");
     }
 
+    jobDSCs = document.getElementsByClassName("jobDsc");
+    for(job of jobDSCs){
+        job.style.display = "none";
+    }
+
     switch(element.id){
         case "role-B1":
+            document.getElementById("job-1").style.display = "block";
             document.getElementById("role-Bar").style.transform = "translateY(0)";
             break;
         case "role-B2":
+            document.getElementById("job-2").style.display = "block";
             document.getElementById("role-Bar").style.transform = "translateY(calc(1 * 48px))";
             break;
         case "role-B3":
+            document.getElementById("job-3").style.display = "block";
             document.getElementById("role-Bar").style.transform = "translateY(calc(2 * 48px))";
             break;
         case "role-B4":
+            document.getElementById("job-4").style.display = "block";
             document.getElementById("role-Bar").style.transform = "translateY(calc(3 * 48px))";
             break;
         default:
+            document.getElementById("job-1").style.display = "block";
             document.getElementById("role-Bar").style.transform = "translateY(0)";
             break;
     }

@@ -526,6 +526,28 @@ a:hover {
 .company {
     font-size: 20px;
     color: var(--highlight);
+    display: inline-block;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    position: relative;
+}
+.company:hover {
+    color: var(--highlight) !important;
+}
+.company::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0%;
+    background-color: var(--text-primary);
+    transition: all ease-in-out 300ms;
+}
+.company:hover::after {
+    width: 100%;
+}
+
+.highlighted {
+    color: var(--highlight);
 }
 
 .responsabilityList {
@@ -584,6 +606,10 @@ a:hover {
     border-radius: 5px;
     background: var(--highlight);
     transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
+}
+
+#job-2 {
+    display: none;
 }
 
 .fromLeft, 
