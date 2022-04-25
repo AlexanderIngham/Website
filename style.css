@@ -189,6 +189,33 @@ main {
     transition: all 200ms ease-in;
 }
 
+
+/*FIX THESE
+#firstSocial {
+    margin-top: 180px;
+}
+.nav-social {
+    text-align: center;
+    position: relative;
+    min-width: 4rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.nav-social:hover::before {
+    opacity: 0;
+}
+.nav-social:hover {
+    transform: translateY(10px);
+    transition: all 200ms ease-in-out;
+}
+.vertical {
+    border-left: 2px solid var(--highlight);
+    height: 400px;
+    position:absolute;
+    right: 50%;
+}
+*/
+
 /*Bottom Navigation Bar (Mobile Only)*/
 .mobilebar {
     position: fixed;
@@ -608,7 +635,9 @@ a:hover {
     transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
 }
 
-#job-2 {
+#job-2,
+#job-3,
+#job-4 {
     display: none;
 }
 
