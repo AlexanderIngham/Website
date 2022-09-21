@@ -507,6 +507,7 @@ a:hover {
 }
 
 .workContainer {
+    height: 620px;
     width: auto;
     margin: 0px auto;
     justify-content: center;
