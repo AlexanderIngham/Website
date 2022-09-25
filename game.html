@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- Author: Alexander Ingham -->
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/pixi.css">
+        <script src="js/pixi.min.js"></script>
+        <title>Alex Ingham</title>
+
+        <script>
+            let app;
+            let player;
+            let keys = {};
+            let lasers = [];
+            let laserSpeed = 5;
+
+            window.onload = function(){
+                app = new PIXI.Application(
+                    {
+                        resizeTo: window,
+                        backgroundColor: 0x282A36
+                    }
+                );
+
+                document.querySelector("#gameDiv").appendChild(app.view);
+
+                //Enable clicking to fire laser
+                app.stage.interactive = true;
+                document.querySelector("#gameDiv").addEventListener("pointerdown", fireLaser);
+                
+                //Preload Assets:
+                app.loader.baseUrl = "gameImages";
+                app.loader
+                    .add("player", "ufo.png")
+                    .add("laser", "laser.png")
+                    .add("asteroid", "asteroid1.png");
+                
+                app.loader.onProgress.add(showProgress);
+                app.loader.onComplete.add(doneLoading);
+                app.loader.onError.add(reportError);
+                app.loader.load();
+
+                //Mouse Interactions:
+                // app.stage.interactive = true;
+                // app.stage.on("pointermove", movePlayer)
+
+                //Keyboard Interactions:
+                window.addEventListener("keydown", keysDown);
+                window.addEventListener("keyup", keysUp);
+
+                app.ticker.add(gameLoop);
+            }
+
+            function keysDown(e) {
+                keys[e.keyCode] = true;
+            }
+
+            function keysUp(e) {
+                keys[e.keyCode] = false;
+            }
+
+            function gameLoop(delta) {
+
+                //Handle movement:
+                if (keys["87"]) {
+                    //W
+                    player.y -= 3;
+                }
+                if (keys["65"]) {
+                    //A
+                    player.x -= 3;
+                }
+                if (keys["83"]) {
+                    //S
+                    player.y += 3;
+                }
+                if (keys["68"]) {
+                    //D
+                    player.x += 3;
+                }
+                
+                //Handle Laser Movement
+                updateLasers(delta)
+            }
+
+            function fireLaser() {
+                let laser = createLaser();
+                lasers.push(laser);
+            }
+
+            function createLaser() {
+                let laser = new PIXI.Sprite.from(app.loader.resources.laser.texture);
+                laser.anchor.set(0.5);
+                laser.x = player.x;
+                laser.y = player.y;
+                laser.speed = laserSpeed;
+                app.stage.addChild(laser);
+
+                return laser;
+            }
+
+            function updateLasers(delta) {
+                for (let i = 0; i<lasers.length; i++) {
+                    lasers[i].position.x += lasers[i].speed;
+                    if (lasers[i].position.x > app.renderer.width){
+                        lasers[i].dead = true;
+                    }
+                }
+                for (let i = 0; i<lasers.length; i++) {
+                    if(lasers[i].dead == true) {
+                        app.stage.removeChild(lasers[i]);
+                        lasers.splice(i, 1);
+                    }
+                }
+            }
+            
+            function showProgress(e) {
+                console.log(e.progress);
+            }
+
+            function doneLoading(e) {
+                console.log("Done Loading.");
+                //Player Object Creation:
+                player = PIXI.Sprite.from(app.loader.resources.player.texture);
+                player.anchor.set(0.5);
+                player.x = app.view.width / 2;
+                player.y = app.view.height / 2;
+                player.width = 80;
+                player.height = 80;
+                app.stage.addChild(player);
+            }
+
+            function reportError(e) {
+                console.error("Error: ", e.message);
+            }
+
+
+            // function movePlayer(e){
+            //     let pos = e.data.global;
+            //     player.x = pos.x;
+            //     player.y = pos.y;
+            // }
+
+        </script>
+    </head>
+
+    <body class="bodyHome" id="body-home">
+        <div id="gameDiv">
+
+        </div>
+    </body>
+</html>
