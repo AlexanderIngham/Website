@@ -69,19 +69,39 @@
                 //Handle movement:
                 if (keys["87"]) {
                     //W
-                    player.y -= 3;
+                    if(player.y <= 25){
+                        player.y = 25;
+                    } else {
+                        player.y -= player.speed;
+                    }
                 }
                 if (keys["65"]) {
                     //A
-                    player.x -= 3;
+                    if(player.x <= 25){
+                        player.x = 25;
+                    } else {
+                        player.x -= player.speed;
+                    }
                 }
                 if (keys["83"]) {
                     //S
-                    player.y += 3;
+                    if(player.y >= (app.renderer.height - 25)){
+                        player.y = (app.renderer.height - 25);
+                    } else {
+                        player.y += player.speed;
+                    }
                 }
                 if (keys["68"]) {
                     //D
-                    player.x += 3;
+                    if(player.x >= (app.renderer.width - 28)){
+                        player.x = (app.renderer.width - 28);
+                    } else {
+                        player.x += player.speed;
+                    }
+                }
+                if (keys["32"]) {
+                    //[SPACE]
+                    fireLaser();
                 }
                 
                 //Handle Laser Movement
@@ -132,6 +152,7 @@
                 player.y = app.view.height / 2;
                 player.width = 80;
                 player.height = 80;
+                player.speed = 3;
                 app.stage.addChild(player);
             }
 
