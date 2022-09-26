@@ -33,18 +33,18 @@
         <!--Side Navigation Bar-->
         <nav id="sidebar" class="sidebar">
             <ul class="sidebar-nav">
-                <li class="sidebar-nav-item sidebar-nav-item-current" data-tooltip="Home">
-                    <a class="sidebar-nav-link" href="index.html">
+                <li class="sidebar-nav-item" data-tooltip="Home" id="Home-Nav">
+                    <a class="sidebar-nav-link" href="#Home">
                         <i class="fa-solid fa-house fa-2x"></i>
                     </a>
                 </li>
-                <li class="sidebar-nav-item" data-tooltip="About">
-                    <a class="sidebar-nav-link" href="AboutMe.html">
+                <li class="sidebar-nav-item" data-tooltip="About" id="About-Nav">
+                    <a class="sidebar-nav-link" href="#About-Me">
                         <i class="fa-regular fa-address-book fa-2x"></i>
                     </a>
                 </li>
-                <li class="sidebar-nav-item" data-tooltip="Projects"> 
-                    <a class="sidebar-nav-link" href="ContactMe.html">
+                <li class="sidebar-nav-item" data-tooltip="Projects" id="Projects-Nav"> 
+                    <a class="sidebar-nav-link" href="#Projects">
                         <i class="fa-solid fa-code-branch fa-2x"></i>
                     </a>
                 </li>
@@ -53,10 +53,10 @@
 
         <!--Bottom Navigation Bar (Mobile only)-->
         <nav id="mobilebar" class="mobilebar">
-            <a class="mobilebar-nav-link" href="index.html">
+            <a class="mobilebar-nav-link" href="#Home">
                 <i class="fa-solid fa-house fa-2x"></i>
             </a>
-            <a class="mobilebar-nav-link" href="AboutMe.html">
+            <a class="mobilebar-nav-link" href="#About-Me">
                 <i class="fa-regular fa-address-book fa-2x"></i>
             </a>
             <a class="mobilebar-nav-link" href="ContactMe.html">
@@ -65,6 +65,7 @@
         </nav>
 
         <!--Content-->
+        <div id="Home"></div>
         <main>
             <div class="titleContainer">    
                 <!--1264  500-->       
@@ -126,6 +127,138 @@
                     </svg>
                                        
             </div>
+            <div id="About-Me"></div>
+            <div class="headerContainer">
+                <i class="fa-solid fa-user-tie fa-2x"></i>
+                <h1 class="aboutMeHeader">About Me</h1>
+            </div>
+            <div class="contentContainer">
+                <div class="col1">
+                    <img src="Images/profileFramedShadow.png" width="300px"/>
+                    <p class="aboutText">
+                        I'm a detail-oriented Computer Engineering graduate with experience working in a variety of software environments and using numerous programming languages. On the right, you can see a list containing some of my technical skills and my level of confidence in each of them.
+                    </p>
+                </div>
+                <div class="col2">
+                    <div class="skill">
+                        <p>C#</p>
+                        <div class="skill-bar skill1">
+                            <span class="skill-val1">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>Java</p>
+                        <div class="skill-bar skill2">
+                             <span class="skill-val2">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>Python</p>
+                        <div class="skill-bar skill3">
+                            <span class="skill-val3">75%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>MATLAB</p>
+                        <div class="skill-bar skill4">
+                            <span class="skill-val4">65%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>CSS</p>
+                        <div class="skill-bar skill5">
+                            <span class="skill-val5">80%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>Wordpress</p>
+                        <div class="skill-bar skill6">
+                            <span class="skill-val6">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>Javascript</p>
+                        <div class="skill-bar skill7">
+                            <span class="skill-val7">55%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="educationContainer">
+                <div class="col1 slideIn fromLeft">
+                    <img src="Images/QueensU_Crest.png" width="150px"/>
+                </div>
+                <div class="col2 slideIn fromRight">
+                    <h2>Education</h2>
+                    <p>
+                        I received my bachelor's degree in Computer Engineering from Queen's University in 2021. During my undergratuate studies I completed a wide range of courses and developped a variety of skills within my field. In my 3rd year of pursuing this degree, I attended Otago University for a semester abroad in Dunedin, New Zealand. Here, I was able to experience a new culture and academic environment.
+                    </p>
+                </div>
+            </div>
+            <div class="workContainer">
+                <h2>Work Experience</h2>
+                <div class="inner">
+                    <div class="col1">
+                        <div class="roleButtonIndicator" id="role-Bar"></div>
+                        <button class="roleButton selectedRoleButton" onclick="roleswap(this)" id="role-B1">IMP Group (IT)</button>
+                        <button class="roleButton" onclick="roleswap(this)" id="role-B2">IMP Group (Dev)</button>
+                        <button class="roleButton" onclick="roleswap(this)" id="role-B3">EGAD</button>
+                        <button class="roleButton" onclick="roleswap(this)" id="role-B4">ECORE</button>
+                    </div>
+                    <div class="col2">
+                        <div class="jobDsc" id="job-1">
+                            <span class="jobTitle">IT Operations Analyst <span class="highlighted">@</span> <a href="https://www.impgroup.com/index.aspx" class="company" target="_blank">IMP Group</a></span>
+                            <br>
+                            <span>May - November 2021</span>
+                            <br>
+                            <ul class="responsabilityList">
+                                <li class="responsabilityItem">Installed and configured computer hardware and software components</li>
+                                <li class="responsabilityItem">Assembled, submitted and deployed JD Edwards at development and production level</li>
+                                <li class="responsabilityItem">Performed troubleshooting for hardware and software issues through ManageEngine products including an issue tracking system</li>
+                                <li class="responsabilityItem">Installed, updated and managed encryption software</li>
+                                <li class="responsabilityItem">Created custom Powershell and Bash scripts for a variety of automation tasks</li>
+                            </ul>
+                        </div>
+                        <div class="jobDsc" id="job-2">
+                            <span class="jobTitle">Junior Application Developer <span class="highlighted">@</span> <a href="https://www.impgroup.com/index.aspx" class="company" target="_blank">IMP Group</a></span>
+                            <br>
+                            <span>November 2021 - Present</span>
+                            <br>
+                            <ul class="responsabilityList">
+                                <li class="responsabilityItem">Developed and maintained complex front and back end software</li>
+                                <li class="responsabilityItem">Created and updated production level .NET applications by writing, testing and implementing code in an agile team environment</li>
+                                <li class="responsabilityItem">Provided end user support and completed troubleshooting of reported bugs</li>
+                                <li class="responsabilityItem">Prepared and reviewed technical documentation and specifications for both hardware and software</li>
+                            </ul>
+                        </div>
+                        <div class="jobDsc" id="job-3">
+                            <span class="jobTitle">Website Developer <span class="highlighted">@</span> <a href="https://egad.engineering.queensu.ca/" class="company" target="_blank">EGAD</a></span>
+                            <br>
+                            <span>June 2017 - June 2021</span>
+                            <br>
+                            <ul class="responsabilityList">
+                                <li class="responsabilityItem">Worked with WordPress (cornerstone) using themes, Javascript, HTML and CSS to update and maintain the <a href="https://egad.engineering.queensu.ca/" class="company" target="_blank">EGAD</a> website</li>
+                                <li class="responsabilityItem">Installed and managed various WordPress plugins to implement a variety of desired web features & functionality</li>
+                                <li class="responsabilityItem">Participated in regular zoom conferences and communicated regularly using Slack</li>
+                                <li class="responsabilityItem">Managed invitation lists for <a href="https://egad.engineering.queensu.ca/" class="company" target="_blank">EGAD</a> events and <a href="https://egad.engineering.queensu.ca/?page_id=5189" class="company" target="_blank">GACIP</a> Summits using excel spreadsheets</li>
+                            </ul>
+                        </div>
+                        <div class="jobDsc" id="job-4">
+                            <span class="jobTitle">Website Developer <span class="highlighted">@</span> <a href="https://ceea.ca/ecore-ciel/" class="company" target="_blank">ECORE</a></span>
+                            <br>
+                            <span>June 2020 - August 2021</span>
+                            <br>
+                            <ul class="responsabilityList">
+                                <li class="responsabilityItem">Worked with WordPress using themes, Javascript, HTML and CSS to update and maintain the <a href="https://ceea.ca/ecore-ciel/" class="company" target="_blank">ECORE</a> website</li>
+                                <li class="responsabilityItem">Conceptualized and designed a suite of logos and graphics during the initial stages of the project</li>
+                                <li class="responsabilityItem">Designed and implemented dynamic graphic content including interactive SVGs</li>
+                                <li class="responsabilityItem">Worked in a bilingual environment to deliver content to both English and French users</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Projects"></div>
         </main>
         <script src="site.js"></script>
         <script src="js/bootstrap.js"></script>

@@ -39,6 +39,38 @@ sliders.forEach(slider=> {
     appearOnScroll.observe(slider);
 });
 
+//Handle Side Nav Hover Effect
+// var target = document.querySelector("#Home-Nav");
+// target.addEventListener("mouseover", mOver(this), false);
+// target.addEventListener("mouseout", mOut(this), false);
+// function mOver() {
+//    target.setAttribute("style", "background-color:blue;")
+// }
+// function mOut() {  
+//    target.setAttribute("style", "background-color:green;")
+// }
+
+//Handle Side Nav Location Indication On Scroll
+function sideNavSwap () {
+    var homeNavElement = document.querySelector("#Home-Nav");
+    var aboutNavElement = document.querySelector("#About-Nav");
+    var projectsNavElement = document.querySelector("#Projects-Nav");
+    if(this.scrollY <= 500){
+        homeNavElement.classList.add("sidebar-nav-item-current");
+        aboutNavElement.classList.remove("sidebar-nav-item-current");
+        projectsNavElement.classList.remove("sidebar-nav-item-current");
+    } else if(this.scrollY > 500){
+        homeNavElement.classList.remove("sidebar-nav-item-current");
+        aboutNavElement.classList.add("sidebar-nav-item-current");
+        projectsNavElement.classList.remove("sidebar-nav-item-current");
+    } else if(this.scrollY > 800) {
+        homeNavElement.classList.remove("sidebar-nav-item-current");
+        aboutNavElement.classList.remove("sidebar-nav-item-current");
+        projectsNavElement.classList.add("sidebar-nav-item-current");
+    }
+}
+window.addEventListener("scroll", sideNavSwap , false);
+
 
 //Role Buttons (About Me Page)
 function roleswap(element) {
