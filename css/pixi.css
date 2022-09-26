@@ -1,5 +1,50 @@
-.bodyHome{
+:root {
+    font-family: 'Press Start 2P';
+}
+
+.bodyHome {
     text-align: center;
     overflow: hidden;
     background-color: #282A36;
+}
+
+.TitleScreen {
+    margin-top: 80px;
+}
+
+.titeUFO {
+    padding: 0;
+    margin: 0;
+}
+
+.gameTitle {
+    padding-top: 0;
+    margin-top: 10px;
+    font-size: 80px;
+    background: linear-gradient(180deg, #8BE9FD 0%, #F0F8FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(8px 8px black);
+}
+
+.gameOptions {
+    width:100%;
+    text-align: center;
+}
+
+.gameOptionsText {
+    margin-right:40px;
+    margin-left:40px; 
+    font-style: normal;
+    display: inline-block;
+    font-size: 30px;
+    color: #8BE9FD;
+    filter: drop-shadow(8px 8px black);
+}
+
+.gameOptionsText:hover {
+    cursor: pointer;
+    text-decoration-line: underline;
+    color: aliceblue;
 }

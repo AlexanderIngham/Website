@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
         <link rel="stylesheet" href="css/pixi.css">
         <script src="js/pixi.min.js"></script>
         <title>Alex Ingham</title>
@@ -16,6 +17,9 @@
             let laserSpeed = 5;
 
             window.onload = function(){
+            }
+
+            function newGame() {
                 app = new PIXI.Application(
                     {
                         resizeTo: window,
@@ -147,7 +151,13 @@
 
     <body class="bodyHome" id="body-home">
         <div id="gameDiv">
-
+        </div>
+        <div class="TitleScreen">
+            <img class="titeUFO" src = "gameImages/ufo_Large.png" />
+            <h1 class="gameTitle">Space-Guy</h1>
+                <h2 class="gameOptionsText" onclick="newGame()">New Game</h2>
+                <h2 class="gameOptionsText">Scoreboard</h2>
+            </div>
         </div>
     </body>
 </html>

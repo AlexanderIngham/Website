@@ -196,33 +196,10 @@ main {
     transition: all 200ms ease-in;
 }
 
+.last-sidebar-nav-item {
+    margin-bottom: 50px;
+}
 
-
-/*FIX THESE
-#firstSocial {
-    margin-top: 180px;
-}
-.nav-social {
-    text-align: center;
-    position: relative;
-    min-width: 4rem;
-    width: 100%;
-    margin-bottom: 2rem;
-}
-.nav-social:hover::before {
-    opacity: 0;
-}
-.nav-social:hover {
-    transform: translateY(10px);
-    transition: all 200ms ease-in-out;
-}
-.vertical {
-    border-left: 2px solid var(--highlight);
-    height: 400px;
-    position:absolute;
-    right: 50%;
-}
-*/
 
 /*Bottom Navigation Bar (Mobile Only)*/
 .mobilebar {
@@ -496,8 +473,17 @@ a:hover {
     padding-bottom: 5rem;
     margin-left: 5rem;
     margin-right: 5rem;
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+    border-radius: 5px;
 }
+
+/* .educationContainer::before {
+    content:"";
+    background-color: white;
+    width: 150%;
+    height : 150%;
+} */
 
 .educationContainer .col1 {
     text-align: center;
