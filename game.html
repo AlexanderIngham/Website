@@ -12,9 +12,12 @@
         <script>
             let app;
             let player;
+            let startTime;
             let keys = {};
             let lasers = [];
+            let asteroids = [];
             let laserSpeed = 5;
+            let asteroidSpeed = 4;
 
             window.onload = function(){
             }
@@ -103,14 +106,29 @@
                     //[SPACE]
                     fireLaser();
                 }
+
+                //Spawn an asteroid every interval
+                var currTime = Date.now();
+                //console.log(Math.round(currTime -startTime) % 1000)
+                if(Math.round(currTime -startTime) % 1000 <= 5) {
+                    //spawnAsteroid();
+                }
                 
                 //Handle Laser Movement
                 updateLasers(delta)
+
+                //Handle Asteroid Movement
+                updateAsteroids(delta)
             }
 
             function fireLaser() {
                 let laser = createLaser();
                 lasers.push(laser);
+            }
+
+            function spawnAsteroid() {
+                let asteroid = createAsteroid();
+                asteroids.push(asteroid);
             }
 
             function createLaser() {
@@ -124,6 +142,19 @@
                 return laser;
             }
 
+            function createAsteroid() {
+                let asteroid = PIXI.Sprite.from(app.loader.resources.asteroid.texture);
+                asteroid.anchor.set(0.5);
+                asteroid.x = app.view.width;
+                asteroid.y = app.view.height / 2;
+                asteroid.width = 80;
+                asteroid.height = 80;
+                asteroid.speed = asteroidSpeed;
+                app.stage.addChild(asteroid);
+
+                return asteroid;
+            }
+
             function updateLasers(delta) {
                 for (let i = 0; i<lasers.length; i++) {
                     lasers[i].position.x += lasers[i].speed;
@@ -135,6 +166,21 @@
                     if(lasers[i].dead == true) {
                         app.stage.removeChild(lasers[i]);
                         lasers.splice(i, 1);
+                    }
+                }
+            }
+
+            function updateAsteroids(delta) {
+                for (let i = 0; i<asteroids.length; i++) {
+                    asteroids[i].position.x -= asteroids[i].speed;
+                    if (asteroids[i].position.x < 0){
+                        asteroids[i].dead = true;
+                    }
+                }
+                for (let i = 0; i<asteroids.length; i++) {
+                    if (asteroids[i].dead == true) {
+                        app.stage.removeChild(asteroids[i]);
+                        asteroids.splice(i, 1);
                     }
                 }
             }
@@ -154,6 +200,7 @@
                 player.height = 80;
                 player.speed = 3;
                 app.stage.addChild(player);
+                startTime = Date.now();
             }
 
             function reportError(e) {
