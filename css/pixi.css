@@ -48,3 +48,17 @@
     text-decoration-line: underline;
     color: aliceblue;
 }
+
+#scoreText {
+    font-style: normal;
+    display: inline-block;
+    font-size: 30px;
+    color: #8BE9FD;
+}
+
+#gameOverText {
+    font-style: normal;
+    display: block;
+    font-size: 30px;
+    color: #8BE9FD;
+}

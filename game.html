@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+        <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/pixi.css">
         <script src="js/pixi.min.js"></script>
         <title>Alex Ingham</title>
@@ -13,6 +13,7 @@
             let app;
             let player;
             let startTime;
+            let score;
             let keys = {};
             let lasers = [];
             let asteroids = [];
@@ -29,7 +30,8 @@
                         backgroundColor: 0x282A36
                     }
                 );
-
+                
+                document.getElementById("gameOverText").innerHTML = "";
                 document.querySelector("#gameDiv").appendChild(app.view);
 
                 //Enable clicking to fire laser
@@ -55,6 +57,8 @@
                 //Keyboard Interactions:
                 window.addEventListener("keydown", keysDown);
                 window.addEventListener("keyup", keysUp);
+                
+                score = 0;
 
                 app.ticker.add(gameLoop);
             }
@@ -110,15 +114,26 @@
                 //Spawn an asteroid every interval
                 var currTime = Date.now();
                 //console.log(Math.round(currTime -startTime) % 1000)
-                if(Math.round(currTime -startTime) % 1000 <= 5) {
-                    //spawnAsteroid();
+                if(Math.round(currTime - startTime) % 1000 <= 5) {
+                    spawnAsteroid();
                 }
                 
                 //Handle Laser Movement
-                updateLasers(delta)
+                updateLasers(delta);
 
                 //Handle Asteroid Movement
-                updateAsteroids(delta)
+                updateAsteroids(delta);
+
+            }
+
+            function rectsIntersect(a, b) {
+                let aBox = a.getBounds();
+                let bBox = b.getBounds();
+                
+                return aBox.x + aBox.width > bBox.x &&
+                       aBox.x < bBox.x + bBox.width &&
+                       aBox.y + aBox.height > bBox.y &&
+                       aBox.y < bBox.y + bBox.height;
             }
 
             function fireLaser() {
@@ -146,7 +161,7 @@
                 let asteroid = PIXI.Sprite.from(app.loader.resources.asteroid.texture);
                 asteroid.anchor.set(0.5);
                 asteroid.x = app.view.width;
-                asteroid.y = app.view.height / 2;
+                asteroid.y = getRndInteger(0, app.view.height);
                 asteroid.width = 80;
                 asteroid.height = 80;
                 asteroid.speed = asteroidSpeed;
@@ -161,6 +176,16 @@
                     if (lasers[i].position.x > app.renderer.width){
                         lasers[i].dead = true;
                     }
+                    //Handle Collision
+                    for (let j = 0; j<asteroids.length; j++) {
+                        if(rectsIntersect(lasers[i], asteroids[j])){
+                            lasers[i].dead = true;
+                            asteroids[j].dead = true;
+                            score += 10;
+                            document.getElementById("scoreText").innerHTML = "Score: "+score;
+                        }
+                    }
+                    
                 }
                 for (let i = 0; i<lasers.length; i++) {
                     if(lasers[i].dead == true) {
@@ -175,6 +200,12 @@
                     asteroids[i].position.x -= asteroids[i].speed;
                     if (asteroids[i].position.x < 0){
                         asteroids[i].dead = true;
+                    }
+                    //Handle Collision
+                    if(rectsIntersect(player, asteroids[i])){
+                        //Game Over
+                        document.getElementById("gameOverText").innerHTML = "GAME OVER";
+                        score = 0;
                     }
                 }
                 for (let i = 0; i<asteroids.length; i++) {
@@ -207,6 +238,10 @@
                 console.error("Error: ", e.message);
             }
 
+            function getRndInteger(min, max) {
+                return Math.floor(Math.random() * (max - min) ) + min;
+            }
+
 
             // function movePlayer(e){
             //     let pos = e.data.global;
@@ -219,6 +254,8 @@
 
     <body class="bodyHome" id="body-home">
         <div id="gameDiv">
+            <h1 id="scoreText">Score: 0</h1>
+            <h1 id="gameOverText"></h1>
         </div>
         <div class="TitleScreen">
             <img class="titeUFO" src = "gameImages/ufo_Large.png" />
