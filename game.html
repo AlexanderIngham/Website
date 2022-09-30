@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/pixi.css">
         <script src="js/pixi.min.js"></script>
         <title>Alex Ingham</title>
@@ -65,6 +65,10 @@
 
             function keysDown(e) {
                 keys[e.keyCode] = true;
+                if (e.keyCode == "32") {
+                    //[SPACE]
+                    fireLaser();
+                }
             }
 
             function keysUp(e) {
@@ -105,10 +109,6 @@
                     } else {
                         player.x += player.speed;
                     }
-                }
-                if (keys["32"]) {
-                    //[SPACE]
-                    fireLaser();
                 }
 
                 //Spawn an asteroid every interval
@@ -204,7 +204,8 @@
                     //Handle Collision
                     if(rectsIntersect(player, asteroids[i])){
                         //Game Over
-                        document.getElementById("gameOverText").innerHTML = "GAME OVER";
+                        document.getElementById("gameOverText").innerHTML = "GAME OVER - Refresh to Restart";
+                        app.ticker.stop();
                         score = 0;
                     }
                 }
@@ -217,11 +218,11 @@
             }
             
             function showProgress(e) {
-                console.log(e.progress);
+                //console.log(e.progress);
             }
 
             function doneLoading(e) {
-                console.log("Done Loading.");
+                //console.log("Done Loading.");
                 //Player Object Creation:
                 player = PIXI.Sprite.from(app.loader.resources.player.texture);
                 player.anchor.set(0.5);
@@ -232,6 +233,7 @@
                 player.speed = 3;
                 app.stage.addChild(player);
                 startTime = Date.now();
+                document.getElementById("scoreText").innerHTML = "Score: 0"
             }
 
             function reportError(e) {
@@ -254,7 +256,7 @@
 
     <body class="bodyHome" id="body-home">
         <div id="gameDiv">
-            <h1 id="scoreText">Score: 0</h1>
+            <h1 id="scoreText"></h1>
             <h1 id="gameOverText"></h1>
         </div>
         <div class="TitleScreen">
