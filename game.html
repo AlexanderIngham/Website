@@ -14,12 +14,15 @@
             let player;
             let startTime;
             let score;
+            let level = 1;
             let keys = {};
             let lasers = [];
             let asteroids = [];
             let laserSpeed = 5;
             let asteroidSpeed = 4;
-            let scoreText
+            let scoreText;
+            let spawnTimer = 0;
+            let spawnInterval = 50;
 
             const scoreStyle = new PIXI.TextStyle({
                 fontFamily: 'Press Start 2P',
@@ -131,9 +134,8 @@
                 }
 
                 //Spawn an asteroid every interval
-                var currTime = Date.now();
-                //console.log(Math.round(currTime -startTime) % 1000)
-                if(Math.round(currTime - startTime) % 1000 <= 5) {
+                spawnTimer += 1;
+                if(spawnTimer % spawnInterval == 0) {
                     spawnAsteroid();
                 }
                 
@@ -143,6 +145,20 @@
                 //Handle Asteroid Movement
                 updateAsteroids(delta);
 
+
+                if(score > 100 && level == 1) {
+                    increaseDifficulty()
+                } else if(score > 200 && level == 2) {
+                    increaseDifficulty()
+                }
+            }
+
+            function increaseDifficulty(){
+                level ++;
+                player.speed++;
+                laserSpeed++;
+                asteroidSpeed++;
+                spawnInterval--;
             }
 
             function rectsIntersect(a, b) {
