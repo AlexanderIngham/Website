@@ -12,6 +12,7 @@
         <script>
             let app;
             let player;
+            let gameStarted = false;
             let startTime;
             let score;
             let level = 1;
@@ -40,6 +41,14 @@
                 fill: '#8BE9FD',
             });
 
+            const startGameStyle = new PIXI.TextStyle({
+                fontFamily: 'Press Start 2P',
+                fontStyle: 'normal',
+                display: 'inline-block',
+                fontSize: '20px',
+                fill: '#8BE9FD',
+            });
+
 
             window.onload = function(){
             }
@@ -63,7 +72,8 @@
                 app.loader
                     .add("player", "ufo.png")
                     .add("laser", "laser.png")
-                    .add("asteroid", "asteroid1.png");
+                    .add("asteroid", "asteroid1.png")
+                    .add("wasd", "WASD.png");
                 
                 app.loader.onProgress.add(showProgress);
                 app.loader.onComplete.add(doneLoading);
@@ -82,12 +92,21 @@
                 scoreText = new PIXI.Text('Score: 0', scoreStyle);
                 app.stage.addChild(scoreText)
 
+            }
+
+            function startGame() {
+                app.stage.removeChild(wasd);
+                app.stage.removeChild(startText);
                 app.ticker.add(gameLoop);
             }
 
             function keysDown(e) {
                 keys[e.keyCode] = true;
                 if (e.keyCode == "32") {
+                    if(!gameStarted){
+                        gameStarted = true;
+                        startGame();
+                    }
                     //[SPACE]
                     fireLaser();
                 }
@@ -272,7 +291,23 @@
                 player.height = 80;
                 player.speed = 3;
                 app.stage.addChild(player);
+
+                wasd = PIXI.Sprite.from(app.loader.resources.wasd.texture);
+                wasd.anchor.set(0.5);
+                wasd.x = app.view.width / 2;
+                wasd.y = (app.view.height / 2) - 100;
+                wasd.width = 177.5;
+                wasd.height = 112;
+                app.stage.addChild(wasd);
+                
+                //Game Over
+                startText = new PIXI.Text('Press [SPACE] To Start', startGameStyle);
+                startText.anchor.set(0.5);
+                startText.x = app.view.width / 2;
+                startText.y = (app.view.height / 2) - 210;
+                app.stage.addChild(startText)
                 startTime = Date.now();
+
             }
 
             function reportError(e) {
