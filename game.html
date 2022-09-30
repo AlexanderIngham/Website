@@ -19,6 +19,24 @@
             let asteroids = [];
             let laserSpeed = 5;
             let asteroidSpeed = 4;
+            let scoreText
+
+            const scoreStyle = new PIXI.TextStyle({
+                fontFamily: 'Press Start 2P',
+                fontStyle: 'normal',
+                display: 'inline-block',
+                fontSize: '30px',
+                fill: '#8BE9FD',
+            });
+
+            const gameOverStyle = new PIXI.TextStyle({
+                fontFamily: 'Press Start 2P',
+                fontStyle: 'bold',
+                display: 'inline-block',
+                fontSize: '50px',
+                fill: '#8BE9FD',
+            });
+
 
             window.onload = function(){
             }
@@ -30,8 +48,7 @@
                         backgroundColor: 0x282A36
                     }
                 );
-                
-                document.getElementById("gameOverText").innerHTML = "";
+
                 document.querySelector("#gameDiv").appendChild(app.view);
 
                 //Enable clicking to fire laser
@@ -59,6 +76,8 @@
                 window.addEventListener("keyup", keysUp);
                 
                 score = 0;
+                scoreText = new PIXI.Text('Score: 0', scoreStyle);
+                app.stage.addChild(scoreText)
 
                 app.ticker.add(gameLoop);
             }
@@ -162,8 +181,9 @@
                 asteroid.anchor.set(0.5);
                 asteroid.x = app.view.width;
                 asteroid.y = getRndInteger(0, app.view.height);
-                asteroid.width = 80;
-                asteroid.height = 80;
+                dims = getRndInteger(40, 90);
+                asteroid.width = dims
+                asteroid.height = dims
                 asteroid.speed = asteroidSpeed;
                 app.stage.addChild(asteroid);
 
@@ -182,7 +202,7 @@
                             lasers[i].dead = true;
                             asteroids[j].dead = true;
                             score += 10;
-                            document.getElementById("scoreText").innerHTML = "Score: "+score;
+                            scoreText.text = 'Score: ' + score;
                         }
                     }
                     
@@ -204,7 +224,11 @@
                     //Handle Collision
                     if(rectsIntersect(player, asteroids[i])){
                         //Game Over
-                        document.getElementById("gameOverText").innerHTML = "GAME OVER - Refresh to Restart";
+                        gameOverText = new PIXI.Text('Game Over', gameOverStyle);
+                        gameOverText.anchor.set(0.5);
+                        gameOverText.x = app.view.width / 2;
+                        gameOverText.y = app.view.height / 2;
+                        app.stage.addChild(gameOverText)
                         app.ticker.stop();
                         score = 0;
                     }
@@ -233,7 +257,6 @@
                 player.speed = 3;
                 app.stage.addChild(player);
                 startTime = Date.now();
-                document.getElementById("scoreText").innerHTML = "Score: 0"
             }
 
             function reportError(e) {
@@ -242,6 +265,10 @@
 
             function getRndInteger(min, max) {
                 return Math.floor(Math.random() * (max - min) ) + min;
+            }
+
+            function getRndFloat(min, max) {
+                return ((Math.random() * (max - min) ) + min).toFixed(2);
             }
 
 
@@ -256,8 +283,6 @@
 
     <body class="bodyHome" id="body-home">
         <div id="gameDiv">
-            <h1 id="scoreText"></h1>
-            <h1 id="gameOverText"></h1>
         </div>
         <div class="TitleScreen">
             <img class="titeUFO" src = "gameImages/ufo_Large.png" />
