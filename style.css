@@ -631,6 +631,49 @@ a:hover {
     transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
 }
 
+.fancyBox{
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.fancyBox::before{
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 390%;
+    background: linear-gradient(#8be9fd, #d400d4);
+    animation: boxBorderRotate 4s linear infinite;
+}
+
+.fancyBox::after{
+    content: '';
+    position: absolute;
+    background: var(--bg-primary);
+    inset: 4px;
+    border-radius: 16px;
+}
+
+@keyframes boxBorderRotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(350deg);
+    }
+}
+
+.fancyBox div{
+    /* color:#fff;
+    font-size: 4em;
+    text-align: center; */
+    z-index: 10;
+}
+
 #job-2,
 #job-3,
 #job-4 {

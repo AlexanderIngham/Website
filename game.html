@@ -19,8 +19,10 @@
             let keys = {};
             let lasers = [];
             let asteroids = [];
+            let extraLives = [];
             let laserSpeed = 5;
             let asteroidSpeed = 4;
+            let powerUpSpeed = 4;
             let scoreText;
             let spawnTimer = 0;
             let spawnInterval = 50;
@@ -73,6 +75,7 @@
                     .add("player", "ufo.png")
                     .add("laser", "laser.png")
                     .add("asteroid", "asteroid1.png")
+                    .add("extraLife", "extraLife.png")
                     .add("wasd", "WASD.png");
                 
                 app.loader.onProgress.add(showProgress);
@@ -164,6 +167,9 @@
                 //Handle Asteroid Movement
                 updateAsteroids(delta);
 
+                //Handle PowerUp Movement
+                updateExtraLives(delta);
+
 
                 if(score > 100 && level == 1) {
                     increaseDifficulty()
@@ -184,6 +190,7 @@
                 laserSpeed++;
                 asteroidSpeed++;
                 spawnInterval--;
+                spawnExtraLife();
             }
 
             function rectsIntersect(a, b) {
@@ -206,6 +213,11 @@
                 asteroids.push(asteroid);
             }
 
+            function spawnExtraLife() {
+                let extraLife = createExtraLife();
+                extraLives.push(extraLife);
+            }
+
             function createLaser() {
                 let laser = new PIXI.Sprite.from(app.loader.resources.laser.texture);
                 laser.anchor.set(0.5);
@@ -213,7 +225,6 @@
                 laser.y = player.y;
                 laser.speed = laserSpeed;
                 app.stage.addChild(laser);
-
                 return laser;
             }
 
@@ -223,12 +234,24 @@
                 asteroid.x = app.view.width;
                 asteroid.y = getRndInteger(0, app.view.height);
                 dims = getRndInteger(40, 90);
-                asteroid.width = dims
-                asteroid.height = dims
+                asteroid.width = dims;
+                asteroid.height = dims;
                 asteroid.speed = asteroidSpeed;
+                asteroid.direction = 1;
                 app.stage.addChild(asteroid);
-
                 return asteroid;
+            }
+
+            function createExtraLife() {
+                let extraLife = PIXI.Sprite.from(app.loader.resources.extraLife.texture);
+                extraLife.anchor.set(0.5);
+                extraLife.x = app.view.width;
+                extraLife.y = getRndInteger(0, app.view.height);
+                extraLife.width = 30;
+                extraLife.height = 30;
+                extraLife.speed = powerUpSpeed;
+                app.stage.addChild(extraLife);
+                return extraLife;
             }
 
             function updateLasers(delta) {
@@ -259,6 +282,11 @@
             function updateAsteroids(delta) {
                 for (let i = 0; i<asteroids.length; i++) {
                     asteroids[i].position.x -= asteroids[i].speed;
+                    // var yChance = Math.random();
+                    // if(yChance < 0.01){  //30% chance to change asteroid direction
+                    //     asteroids[i].direction = asteroids[i].direction*-1;
+                    // }
+                    // asteroids[i].position.y += asteroids[i].direction*2;
                     if (asteroids[i].position.x < 0){
                         asteroids[i].dead = true;
                     }
@@ -269,7 +297,7 @@
                         gameOverText.anchor.set(0.5);
                         gameOverText.x = app.view.width / 2;
                         gameOverText.y = app.view.height / 2;
-                        app.stage.addChild(gameOverText)
+                        app.stage.addChild(gameOverText);
                         app.ticker.stop();
                         score = 0;
                     }
@@ -278,6 +306,25 @@
                     if (asteroids[i].dead == true) {
                         app.stage.removeChild(asteroids[i]);
                         asteroids.splice(i, 1);
+                    }
+                }
+            }
+
+            function updateExtraLives(delta) {
+                for (let i = 0; i<extraLives.length; i++) {
+                    extraLives[i].position.x -= extraLives[i].speed;
+                    if (extraLives[i].position.x < 0){
+                        extraLives[i].dead = true;
+                    }
+                    //Handle Collision
+                    if(rectsIntersect(player, extraLives[i])){
+                        console.log("Extra Life!");
+                    }
+                }
+                for (let i = 0; i<extraLives.length; i++) {
+                    if (extraLives[i].dead == true) {
+                        app.stage.removeChild(extraLives[i]);
+                        extraLives.splice(i, 1);
                     }
                 }
             }
