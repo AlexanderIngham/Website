@@ -700,6 +700,30 @@ a:hover {
     opacity: 1;
 }
 
+#Projects{
+    text-align: center;
+    align-content: center;
+}
+
+#Projects h1 {
+    color: #FFFFFF; 
+    text-shadow: 0px 0px 151px rgba(139, 233, 253, 0.25),
+    0px 0px 102px rgba(139, 233, 253, 0.25), 
+    0px 0px 92px rgba(139, 233, 253, 0.25), 
+    0px 0px 82px rgba(139, 233, 253, 0.25), 
+    0px 0px 42px rgba(139, 233, 253, 0.25), 
+    0px 0px 21px rgba(255, 255, 255, 0.25), 
+    0px 0px 10px rgba(255, 255, 255, 0.25), 
+    0px 0px 7px rgba(255, 255, 255, 0.25);
+}
+
+.titleBar {
+    width: 20%;
+    background: rgba(0, 0, 0, 0.344);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 43px;
+}
+
 
 /*Small Screens*/
 @media only screen and (max-width: 800px){
