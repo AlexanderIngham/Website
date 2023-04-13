@@ -102,6 +102,10 @@ function roleswap(element) {
             document.getElementById("job-4").style.display = "block";
             document.getElementById("role-Bar").style.transform = "translateY(calc(3 * 48px))";
             break;
+        case "role-B5":
+            document.getElementById("job-5").style.display = "block";
+            document.getElementById("role-Bar").style.transform = "translateY(calc(4 * 48px))";
+            break;
         default:
             document.getElementById("job-1").style.display = "block";
             document.getElementById("role-Bar").style.transform = "translateY(0)";

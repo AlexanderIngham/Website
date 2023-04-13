@@ -59,7 +59,7 @@ main {
 .topbar {
     display:flex;
     background-color: var(--bg-secondary);
-    z-index: 2;
+    z-index: 5;
     position:fixed;
     width:100%;
 }
@@ -410,7 +410,7 @@ a:hover {
 }
 @keyframes html-fill3{
     100%{
-        width: 75%;
+        width: 90%;
     }
 }
 .skill4{
@@ -476,6 +476,7 @@ a:hover {
     background-color: var(--bg-primary);
     box-shadow: 0 20px 35px rgba(0,0,0,0.3);
     border-radius: 5px;
+    z-index: 0;
 }
 
 /* .educationContainer::before {
@@ -648,6 +649,7 @@ a:hover {
     height: 390%;
     background: linear-gradient(#8be9fd, #d400d4);
     animation: boxBorderRotate 4s linear infinite;
+    animation-iteration-count: 2;
 }
 
 .fancyBox::after{
@@ -676,7 +678,8 @@ a:hover {
 
 #job-2,
 #job-3,
-#job-4 {
+#job-4,
+#job-5 {
     display: none;
 }
 
