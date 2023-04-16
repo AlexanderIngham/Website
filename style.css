@@ -706,6 +706,14 @@ a:hover {
 #Projects{
     text-align: center;
     align-content: center;
+    height: 620px;
+    width: auto;
+    margin: 0px auto;
+    justify-content: center;
+    max-width: 50rem;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
 }
 
 #Projects h1 {

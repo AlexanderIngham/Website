@@ -26,6 +26,7 @@
             let scoreText;
             let spawnTimer = 0;
             let spawnInterval = 50;
+            let GameOver = false;
 
             const scoreStyle = new PIXI.TextStyle({
                 fontFamily: 'Press Start 2P',
@@ -40,6 +41,14 @@
                 fontStyle: 'bold',
                 display: 'inline-block',
                 fontSize: '50px',
+                fill: '#8BE9FD',
+            });
+
+            const retryStyle = new PIXI.TextStyle({
+                fontFamily: 'Press Start 2P',
+                fontStyle: 'bold',
+                display: 'inline-block',
+                fontSize: '20px',
                 fill: '#8BE9FD',
             });
 
@@ -58,7 +67,8 @@
             function newGame() {
                 app = new PIXI.Application(
                     {
-                        resizeTo: window,
+                        width: 1600, // Set the width of the application to 800 pixels
+                        height: 900, // Set the height of the application to 600 pixels
                         backgroundColor: 0x282A36
                     }
                 );
@@ -90,6 +100,9 @@
                 //Keyboard Interactions:
                 window.addEventListener("keydown", keysDown);
                 window.addEventListener("keyup", keysUp);
+
+
+                GameOver = false;
                 
                 score = 0;
                 scoreText = new PIXI.Text('Score: 0', scoreStyle);
@@ -113,6 +126,13 @@
                     //[SPACE]
                     fireLaser();
                 }
+
+                //Handle Retry
+                if(GameOver) {
+                    if(e.keyCode == 82){
+                        location.reload();
+                    }
+                }
             }
 
             function keysUp(e) {
@@ -121,6 +141,7 @@
 
             function gameLoop(delta) {
 
+                
                 //Handle movement:
                 if (keys["87"]) {
                     //W
@@ -202,6 +223,7 @@
                        aBox.y + aBox.height > bBox.y &&
                        aBox.y < bBox.y + bBox.height;
             }
+            
 
             function fireLaser() {
                 let laser = createLaser();
@@ -293,11 +315,18 @@
                     //Handle Collision
                     if(rectsIntersect(player, asteroids[i])){
                         //Game Over
+                        GameOver = true;
                         gameOverText = new PIXI.Text('Game Over', gameOverStyle);
                         gameOverText.anchor.set(0.5);
                         gameOverText.x = app.view.width / 2;
                         gameOverText.y = app.view.height / 2;
                         app.stage.addChild(gameOverText);
+                        //Press R to retry
+                        retryText = new PIXI.Text('Press R to retry...', retryStyle);
+                        retryText.anchor.set(0.5);
+                        retryText.x = app.view.width / 2;
+                        retryText.y = (app.view.height / 2) + 50;
+                        app.stage.addChild(retryText);
                         app.ticker.stop();
                         score = 0;
                     }
